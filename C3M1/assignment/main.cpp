@@ -25,6 +25,7 @@ Author: Jay Liao (jay.chiehen@gmail.com)
 #include <string>
 #include <vector>
 #include <fstream>
+#include <cmath>
 #include "csStudent.h"
 
 using namespace std; // so that we don't need to keep writing std::
@@ -67,6 +68,43 @@ csStudent turnLineTocsStudent(vector<string> tokens) {
     return student;
 }
 
+double computeAverageGPA(const vector<csStudent>& students) {
+    double sum = 0;
+    for (const csStudent& student : students) {
+        sum += student.gpa;
+    }
+    return students.empty() ? 0 : sum / students.size();
+}
+
+double computeStdGPA(const vector<csStudent>& students) {
+    double sum_sq = 0;
+    double AverageGPA = computeAverageGPA(students);
+    for (const csStudent& student : students) {
+        sum_sq += pow((student.gpa - AverageGPA), 2);
+    }
+    return sqrt(sum_sq);
+}
+
+double computeLowGPA(const vector<csStudent>& students) {
+    double low = students[0].gpa;
+    for (const csStudent& student : students) {
+        if (student.gpa < low) {
+            low = student.gpa;
+        }
+    }
+    return low;
+}
+
+double computeHighGPA(const vector<csStudent>& students) {
+    double high = students[0].gpa;
+    for (const csStudent& student : students) {
+        if (student.gpa > high) {
+            high = student.gpa;
+        }
+    }
+    return high;
+}
+
 int main() {
 
     ifstream csvFile{"cs_students.csv"};
@@ -79,11 +117,6 @@ int main() {
         getline(csvFile, line); // Read the csv header line but do nothing with it
         while (getline(csvFile, line)) {
             tokens = tokenize(line, ',');
-            // cout << "Read line " << line << endl;
-            // for (const string& token : tokens) {
-            //     cout << token << endl;
-            // }
-
             if (tokens.size() != 12) {
                 cout << "\nError: a bad line!\n" << endl;
                 continue;
@@ -100,15 +133,15 @@ int main() {
 
         // Computing and displaying basic statistics
         cout << "------- Statistics ------" << endl;
-        cout << "A total of " << students.size() << " students were included in the csv file." << end
-
+        cout << "A total of " << students.size() << " students were included in the csv file." << endl;
+        cout << "Average of GPA = " << computeAverageGPA(students) << endl;
+        cout << "Standard deviation of GPA = " << computeStdGPA(students) << endl;
+        cout << "Highest GPA = " << computeHighGPA(students) << endl;
+        cout << "Lowest GPA = " << computeLowGPA(students) << endl;
     }
     else {
         cout << "File can not be opened!" << endl;
     }
-
     return 0;
-
-
 };
 

@@ -47,9 +47,14 @@ int main() {
                     cout << "\nError: a bad line!\n" << endl;
                     continue;
                 }
-                double price = stod(tokens[3]);
-                double amount = stod(tokens[4]);
-                cout << "Price=" << price << " | Amount" << amount << endl;
+                try {
+                    double price = stod(tokens[3]);
+                    double amount = stod(tokens[4]);
+                    cout << "Price=" << price << " | Amount" << amount << endl;
+                } catch (exception& e) {
+                    cout << "A bad float! " << tokens[3] << " | " << tokens[4] << endl;
+                    break;
+                }
             }
         }
         csvFile.close();

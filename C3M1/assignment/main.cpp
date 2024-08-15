@@ -19,6 +19,9 @@ The CSV file contains 12 columns:
 11. (string) SQL: Proficiency level in SQL querying.
 12. (string) Java: Proficiency level in Java programming.
 
+To compile this cpp file, use the following shell command:
+`g++ main.cpp csStudent.cpp --std=c++11`
+
 Author: Jay Liao (jay.chiehen@gmail.com)
 
 */

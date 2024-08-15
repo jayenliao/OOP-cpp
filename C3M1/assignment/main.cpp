@@ -59,12 +59,12 @@ csStudent turnLineTocsStudent(vector<string> tokens) {
     int id = stod(tokens[0]);
     int age = stod(tokens[3]);
     double gpa = stod(tokens[4]);
-    csStudent new_csStudent{
+    csStudent student{
         id, tokens[1], tokens[2], age, gpa,
         tokens[5], tokens[6], tokens[7], tokens[8],
         tokens[9], tokens[10], tokens[11]
     };
-    return new_csStudent;
+    return student;
 }
 
 int main() {
@@ -75,7 +75,7 @@ int main() {
 
     if (csvFile.is_open()) {
         cout << "File is opened!\n" << endl;
-        vector<csStudent> csStudents;
+        vector<csStudent> students;
         getline(csvFile, line); // Read the csv header line but do nothing with it
         while (getline(csvFile, line)) {
             tokens = tokenize(line, ',');
@@ -89,8 +89,8 @@ int main() {
                 continue;
             }
             try {
-                csStudent new_csStudent = turnLineTocsStudent(tokens);
-                csStudents.push_back(new_csStudent);
+                csStudent student = turnLineTocsStudent(tokens);
+                students.push_back(student);
             } catch (exception& e) {
                 cout << "Error in  " << tokens[3] << " | " << tokens[4] << endl;
                 break;
@@ -99,7 +99,9 @@ int main() {
         csvFile.close();
 
         // Computing and displaying basic statistics
-        cout << "------- Statistics of PRICE ------" << endl;
+        cout << "------- Statistics ------" << endl;
+        cout << "A total of " << students.size() << " students were included in the csv file." << end
+
     }
     else {
         cout << "File can not be opened!" << endl;

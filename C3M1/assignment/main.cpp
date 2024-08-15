@@ -1,7 +1,9 @@
 /*
 
-This program reads the csv file "cs_student.csv",
-which contains information about computer science students from a fictional university.
+This program
+- reads the csv file "cs_student.csv", which contains information about computer science students from a fictional university,
+- puts a row of the csv file as a instance of csStudent class, and
+- computes some statistics.
 
 The CSV file contains 12 columns:
  1. (int) Student ID: Unique identifier for each student.

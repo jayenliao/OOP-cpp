@@ -55,6 +55,18 @@ vector<string> tokenize(string csvLine, char separator) {
     return tokens;
 };
 
+csStudent turnLineTocsStudent(vector<string> tokens) {
+    int id = stod(tokens[0]);
+    int age = stod(tokens[3]);
+    double gpa = stod(tokens[4]);
+    csStudent new_csStudent{
+        id, tokens[1], tokens[2], age, gpa,
+        tokens[5], tokens[6], tokens[7], tokens[8],
+        tokens[9], tokens[10], tokens[11]
+    };
+    return new_csStudent;
+}
+
 int main() {
 
     ifstream csvFile{"cs_students.csv"};
@@ -63,7 +75,6 @@ int main() {
 
     if (csvFile.is_open()) {
         cout << "File is opened!\n" << endl;
-        // int cnt_ln = 0;
         vector<csStudent> csStudents;
         getline(csvFile, line); // Read the csv header line but do nothing with it
         while (getline(csvFile, line)) {
@@ -78,15 +89,7 @@ int main() {
                 continue;
             }
             try {
-                int id = stod(tokens[0]);
-                int age = stod(tokens[3]);
-                double gpa = stod(tokens[4]);
-                cout << "ID " << id << " | Age=" << age << ", GPA=" << gpa << endl;
-                csStudent new_csStudent{
-                    id, tokens[1], tokens[2], age, gpa,
-                    tokens[5], tokens[6], tokens[7], tokens[8],
-                    tokens[9], tokens[10], tokens[11]
-                };
+                csStudent new_csStudent = turnLineTocsStudent(tokens);
                 csStudents.push_back(new_csStudent);
             } catch (exception& e) {
                 cout << "Error in  " << tokens[3] << " | " << tokens[4] << endl;

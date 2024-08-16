@@ -17,7 +17,7 @@ vector<OrderBookEntry> CSVReader::readCSV(string csvFilename) {
     if (csvFile.is_open()) {
         while (getline(csvFile, line)) {
             OrderBookEntry obe = strToOBE(tokenize(line, ','));
-            entries.push_back(obs);
+            entries.push_back(obe);
         } // end while
         csvFile.close();
         cout << "CSVReader::readCSV has read " << entries.size() << " entries" << endl;

@@ -2,6 +2,7 @@
 #include <vector>
 #include "MerkelMain.h"
 #include "OrderBookEntry.h"
+#include "CSVReader.h"
 
 using namespace std;
 
@@ -20,17 +21,7 @@ void MerkelMain::init() {
 }
 
 void MerkelMain::loadOrderBook() {
-    orders.push_back(OrderBookEntry("2020/03/17 17:01:24.884492", "BTC/USDT", OrderBookType::ask, 5377.46076613,0.0064523));
-    orders.push_back(OrderBookEntry("2020/03/17 17:01:24.884492", "BTC/USDT", OrderBookType::ask, 5378.24518971,0.88506963));
-    orders.push_back(OrderBookEntry("2020/03/17 17:01:24.884492", "BTC/USDT", OrderBookType::ask, 5381.87187775,0.0008));
-    orders.push_back(OrderBookEntry("2020/03/17 17:01:24.884492", "BTC/USDT", OrderBookType::ask, 5384.99999998,0.73293336));
-    orders.push_back(OrderBookEntry("2020/03/17 17:01:24.884492", "BTC/USDT", OrderBookType::ask, 5385.,0.0194056));
-    orders.push_back(OrderBookEntry("2020/03/17 17:01:24.884492", "BTC/USDT", OrderBookType::ask, 5400.,0.0384));
-    orders.push_back(OrderBookEntry("2020/03/17 17:01:24.884492", "BTC/USDT", OrderBookType::bid, 5290.,0.00903071));
-    orders.push_back(OrderBookEntry("2020/03/17 17:01:30.099017", "BTC/USDT", OrderBookType::bid, 5340.8502489, 0.00735261));
-    orders.push_back(OrderBookEntry("2020/03/17 17:01:30.099017", "BTC/USDT", OrderBookType::bid, 5338.00000001, 0.4284));
-    orders.push_back(OrderBookEntry("2020/03/17 17:01:30.099017", "BTC/USDT", OrderBookType::bid, 5338., 0.00187337));
-
+    orders = CSVReader::readCSV("/Users/jayliao/Documents/2_areas/001_programming/cpp/coursera_OOP_specialization/C3M1/Merkelerex/src/20200317.csv");
 }
 
 void MerkelMain::printMenu() {

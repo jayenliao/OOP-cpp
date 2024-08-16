@@ -8,7 +8,6 @@
 using namespace std;
 
 int main() {
-    // MerkelMain app{};
-    // app.init();
-    CSVReader reader;
+    MerkelMain app{};
+    app.init();
 }

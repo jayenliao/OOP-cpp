@@ -40,7 +40,14 @@ void MerkelMain::printHelp() {
 
 void MerkelMain::printMarketStats() {
     cout << "OrderBook contains: " << orders.size() << " entries.\n" << endl;
-
+    unsigned int bids = 0;
+    unsigned int asks = 0;
+    for (OrderBookEntry& entry : orders) {
+        if (entry.orderType == OrderBookType::bid) {++bids;}
+        if (entry.orderType == OrderBookType::ask) {++asks;}
+    }
+    cout << "Number of bids = " << bids << endl;
+    cout << "Number of asks = " << asks << endl;
 }
 
 void MerkelMain::enterOffer() {

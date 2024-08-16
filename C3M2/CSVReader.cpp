@@ -11,11 +11,11 @@ vector<OrderBookEntry> CSVReader::readCSV(string csvFilename) {
     vector<OrderBookEntry> entries;
     return entries;
 }
-CSVReader::tokenize(string csvLine, char separator) {
+vector<string> CSVReader::tokenize(string csvLine, char separator) {
     vector<string> tokens;
     return tokens;
 }
-CSVReader::strToOBE(vector<string> strings) {
+OrderBookEntry CSVReader::strToOBE(vector<string> strings) {
     OrderBookEntry obe{
         double 1,
         double 1,

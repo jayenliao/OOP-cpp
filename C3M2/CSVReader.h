@@ -12,5 +12,5 @@ class CSVReader {
         static vector<OrderBookEntry> readCSV(string csvFilename);
     private:
         static vector<string> tokenize(string csvLine, char separator);
-        OrderBookEntry strToOBE(vector<string> strings);
+        static OrderBookEntry strToOBE(vector<string> strings);
 };

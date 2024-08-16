@@ -17,11 +17,11 @@ vector<string> CSVReader::tokenize(string csvLine, char separator) {
 }
 OrderBookEntry CSVReader::strToOBE(vector<string> strings) {
     OrderBookEntry obe{
-        double 1,
-        double 1,
-        std::string "_timestamp",
-        std::string "_product",
-        OrderBookType OrderBookType::bid
+        "_timestamp",
+        "_product",
+        OrderBookType::bid,
+        1,
+        1
     };
     return obe;
 }

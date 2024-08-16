@@ -1,6 +1,7 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <fstream>
 #include "CSVReader.h"
 
 using namespace std;
@@ -10,6 +11,21 @@ CSVReader::CSVReader() {
 }
 vector<OrderBookEntry> CSVReader::readCSV(string csvFilename) {
     vector<OrderBookEntry> entries;
+    ifstream csvFile(csvFilename);
+    string line;
+
+    if (csvFile.is_open()) {
+        while (getline(csvFile, line)) {
+            OrderBookEntry obe = strToOBE(tokenize(line, ','));
+            entries.push_back(obs);
+        } // end while
+        csvFile.close();
+        cout << "CSVReader::readCSV has read " << entries.size() << " entries" << endl;
+    }
+    else {
+        cout << "File can not be opened!" << endl;
+    }
+
     return entries;
 }
 vector<string> CSVReader::tokenize(string csvLine, char separator) {
@@ -34,7 +50,7 @@ vector<string> CSVReader::tokenize(string csvLine, char separator) {
         tokens.push_back(token);
         start = end + 1;
     } while (end > 0);
-    
+
     return tokens;
 }
 OrderBookEntry CSVReader::strToOBE(vector<string> tokens) {

@@ -27,6 +27,7 @@ OrderBookEntry CSVReader::strToOBE(vector<string> tokens) {
         amount = stod(tokens[4]);
     } catch (exception& e) {
         cout << "Bad float(s)! " << tokens[3] << " | " << tokens[4] << endl;
+        throw;
     }
     OrderBookEntry obe{
         tokens[0],

@@ -13,7 +13,28 @@ vector<OrderBookEntry> CSVReader::readCSV(string csvFilename) {
     return entries;
 }
 vector<string> CSVReader::tokenize(string csvLine, char separator) {
+
+    // string vector tokens ## stores the tokens
     vector<string> tokens;
+
+    // int start end ## used to delineate token positions
+    signed int start, end;
+    string token;
+
+    start = csvLine.find_first_not_of(separator, 0);
+    do {
+        end = csvLine.find_first_of(separator, start);
+        if (start == csvLine.length() || start == end) {break;}
+        if (end >= 0) { // a token is found
+            token = csvLine.substr(start, end - start);
+        }
+        else {
+            token = csvLine.substr(start, csvLine.length() - start);
+        }
+        tokens.push_back(token);
+        start = end + 1;
+    } while (end > 0);
+    
     return tokens;
 }
 OrderBookEntry CSVReader::strToOBE(vector<string> tokens) {

@@ -16,3 +16,9 @@ OrderBookEntry::OrderBookEntry(
 {
 
 }
+
+OrderBookType OrderBookEntry::strToOBT(string s) {
+  if (s == "ask") {return OrderBookType::ask;}
+  else if (s == "bid") {return OrderBookType::bid;}
+  else {return OrderBookType::unknown;}
+}

@@ -1,8 +1,7 @@
 #pragma once
-
 #include <string>
 
-enum class OrderBookType{bid, ask};
+enum class OrderBookType{bid, ask, unknown};
 
 class OrderBookEntry
 {
@@ -14,6 +13,8 @@ class OrderBookEntry
             double _price,
             double _amount
         );
+        static OrderBookType strToOBT(string s);
+
         double price;
         double amount;
         std::string timestamp;

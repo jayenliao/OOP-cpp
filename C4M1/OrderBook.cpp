@@ -1,4 +1,5 @@
 #include "OrderBook.h"
+#include <map>
 
 using namespace std;
 
@@ -10,6 +11,17 @@ OrderBook::OrderBook(std::string filename) {
 /* Return vector of all known products in the dataset */
 vector<string> OrderBook::getKnownProducts() {
     vector<string> products;
+    map<string, bool> prodMap;
+
+    for (OrderBookEntry& order : orders) {
+        prodMap[order.product] = true;
+    }
+
+    // Now flatten the map to a vector of strings
+    for (auto const& product : prodMap) {
+        products.push_back(product.first);
+    }
+
     return products;
 }
 

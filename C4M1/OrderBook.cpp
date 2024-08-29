@@ -32,6 +32,16 @@ vector<OrderBookEntry> OrderBook::getOrders(
     string timestamp
 ) {
     vector<OrderBookEntry> orders_sub;
+    for (OrderBookEntry& entry : orders) {
+        if (
+            entry.orderType == type &&
+            entry.product == product &&
+            entry.timestamp == timestamp
+        ) {
+            orders_sub.push_back(entry);
+        }
+    }
+
     return orders_sub;
 }
 

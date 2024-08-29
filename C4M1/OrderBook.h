@@ -23,6 +23,7 @@ class OrderBook {
         );
 
         static double getHighPrice(vector<OrderBookEntry>& orders);
+        static double getLowPrice(vector<OrderBookEntry>& orders);
 
     private:
         vector<OrderBookEntry> orders;

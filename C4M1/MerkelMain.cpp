@@ -46,6 +46,7 @@ void MerkelMain::printMarketStats() {
         );
         cout << "Asks seen: " << entries.size() << endl;
         cout << "Maximum ask: " << OrderBook::getHighPrice(entries) << endl;
+        cout << "Minimum ask: " << OrderBook::getLowPrice(entries) << endl;
 
     }
     // cout << "OrderBook contains: " << orders.size() << " entries.\n" << endl;

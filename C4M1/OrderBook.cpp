@@ -45,3 +45,12 @@ vector<OrderBookEntry> OrderBook::getOrders(
     return orders_sub;
 }
 
+
+double getHighPrice(vector<OrderBookEntry>& orders) {
+    double max = orders[0].price;
+    for (OrderBookEntry& entry : orders) {
+        if (entry.price > max) {max = entry.price;}
+
+    }
+    return max;
+}

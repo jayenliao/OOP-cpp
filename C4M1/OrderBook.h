@@ -22,6 +22,8 @@ class OrderBook {
             string timestamp
         );
 
+        static double getHighPrice(vector<OrderBookEntry>& orders);
+
     private:
         vector<OrderBookEntry> orders;
 };

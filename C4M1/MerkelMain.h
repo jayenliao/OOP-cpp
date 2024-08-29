@@ -8,7 +8,7 @@ using namespace std;
 class MerkelMain {
     public:
         MerkelMain();
-        /* Call this to start the sim */
+        /** Call this to start the sim */
         void init();
 
     private:

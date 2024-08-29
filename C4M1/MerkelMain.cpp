@@ -11,7 +11,7 @@ MerkelMain::MerkelMain() {
 }
 
 void MerkelMain::init() {
-    loadOrderBook();
+    // loadOrderBook();
     int input;
     while (true) {
         printMenu();
@@ -20,9 +20,9 @@ void MerkelMain::init() {
     }
 }
 
-void MerkelMain::loadOrderBook() {
-    orders = CSVReader::readCSV("/Users/jayliao/Documents/2_areas/001_programming/cpp/coursera_OOP_specialization/C3M1/Merkelerex/src/20200317.csv");
-}
+// void MerkelMain::loadOrderBook() {
+//     orders = CSVReader::readCSV("/Users/jayliao/Documents/2_areas/001_programming/cpp/coursera_OOP_specialization/C3M1/Merkelerex/src/20200317.csv");
+// }
 
 void MerkelMain::printMenu() {
     cout << "----- MerkleRex Menu -----" << endl;

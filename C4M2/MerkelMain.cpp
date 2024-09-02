@@ -19,6 +19,7 @@ void MerkelMain::init() {
         input = getUserOption();
         processUserOption(input);
     }
+
 }
 
 // void MerkelMain::loadOrderBook() {
@@ -26,6 +27,7 @@ void MerkelMain::init() {
 // }
 
 void MerkelMain::printMenu() {
+    cout << endl;
     cout << "----- MerkleRex Menu -----" << endl;
     cout << "1. Print help" << endl;
     cout << "2. Print exchange stats" << endl;
@@ -73,15 +75,19 @@ void MerkelMain::printMarketStats() {
 }
 
 void MerkelMain::enterAsk() {
-    cout << "Make an offer: Enter product, price, and amount to ask." << endl;
-    cout << "E.g., ETH/BTC, 200, 0.5.\t" << endl;
+    cout << "Make an ask - enter product, price, and amount. E.g., ETH/BTC, 200, 0.5." << endl;
     string input;
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    getline(cin, input);
+    char ch;
+    // Read characters one by one until newline is encountered
+    while (cin.get(ch) && ch != '\n') {
+        input += ch;
+    }
+    cout << "You entered: " << input << endl;
+
     vector<string> tokens = CSVReader::tokenize(input, ',');
     if (tokens.size() != 3) {
         cout << "Bad input: " << input << endl;
-        cout << "There should be 3 tokens!\n" << endl;
+        cout << "There should be 3 tokens!" << endl;
     }
     else {
         try {
@@ -96,9 +102,6 @@ void MerkelMain::enterAsk() {
             cout << "MerkelMain::enterAsk() bad input!" << endl;
         }
     }
-
-    cout << "You entered: " << input << endl;
-
 }
 
 void MerkelMain::enterBid() {
@@ -119,10 +122,17 @@ void MerkelMain::warnInvalid() {
 }
 
 int MerkelMain::getUserOption() {
-    int userOption;
+    string line;
+    int userOption = 0;
     cout << "Select an option from 1 to 6: ";
-    cin >> userOption;
-    cout << "Your choice: " << userOption << endl;
+    getline(cin, line);
+    try {
+        userOption = stoi(line);
+        cout << "Your choice: " << userOption << endl;
+    } catch(const std::exception& e) {
+        cout << "Bad input." << endl;
+    }
+
     return userOption;
 }
 

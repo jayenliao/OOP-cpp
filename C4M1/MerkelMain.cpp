@@ -51,6 +51,15 @@ void MerkelMain::printMarketStats() {
         cout << "Maximum ask: " << OrderBook::getHighPrice(entries) << endl;
         cout << "Minimum ask: " << OrderBook::getLowPrice(entries) << endl;
 
+        vector<double> prices1H = OrderBook::get1HPrices(entries, currentTime);
+        double change = prices1H[1] - prices1H[0];
+        double change_percent = change / prices1H[0] * 100;
+        cout << "Ask price change in the last 1H: " << prices1H[1] << " - " <<  prices1H[0] << " = " << change << " (" << change_percent << "%)" << endl;
+
+        cout << "Average ask price: " << OrderBook::getPriceMean(entries) << endl;
+        cout << "Std of ask price: " << OrderBook::getPriceStd(entries) << endl;
+        cout << endl;
+
     }
     // cout << "OrderBook contains: " << orders.size() << " entries.\n" << endl;
     // unsigned int bids = 0;

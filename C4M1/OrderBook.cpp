@@ -119,7 +119,7 @@ double OrderBook::getPriceMean(vector<OrderBookEntry>& orders) {
 
 double OrderBook::getPriceStd(vector<OrderBookEntry>& orders) {
     double sum_sq = 0;
-    double priceMean = getPriceMean(orders)
+    double priceMean = getPriceMean(orders);
     for (const OrderBookEntry& order : orders) {
         sum_sq += pow((order.price - priceMean), 2);
     }

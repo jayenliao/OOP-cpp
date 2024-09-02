@@ -33,6 +33,8 @@ class OrderBook {
         static double getHighPrice(vector<OrderBookEntry>& orders);
         static double getLowPrice(vector<OrderBookEntry>& orders);
         static vector<double> get1HPrices(vector<OrderBookEntry>& orders, string& currentTime);
+        static double getPriceMean(vector<OrderBookEntry>& orders);
+        static double getPriceStd(vector<OrderBookEntry>& orders);
 
     private:
         vector<OrderBookEntry> orders;

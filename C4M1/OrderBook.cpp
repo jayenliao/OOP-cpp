@@ -109,8 +109,22 @@ vector<double> OrderBook::get1HPrices(vector<OrderBookEntry>& orders, string& cu
     return prices1H;
 }
 
+double OrderBook::getPriceMean(vector<OrderBookEntry>& orders) {
+    double sum = 0;
+    for (const OrderBookEntry& order : orders) {
+        sum += order.price;
+    }
+    return orders.empty() ? 0 : sum / orders.size();
+}
 
-
+double OrderBook::getPriceStd(vector<OrderBookEntry>& orders) {
+    double sum_sq = 0;
+    double priceMean = getPriceMean(orders)
+    for (const OrderBookEntry& order : orders) {
+        sum_sq += pow((order.price - priceMean), 2);
+    }
+    return sqrt(sum_sq);
+}
 
 string OrderBook::getEarlistTime() {
    return orders[0].timestamp;

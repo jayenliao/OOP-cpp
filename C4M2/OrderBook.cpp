@@ -148,3 +148,52 @@ void OrderBook::insertOrder(OrderBookEntry& order) {
     orders.push_back(order);
     sort(orders.begin(), orders.end(), OrderBookEntry::compateByTimestamp);
 }
+
+vector<OrderBookEntry> OrderBook::matchAsksToBids(
+    string product,
+    string timestamp
+) {
+    // asks = orderbook.asks
+    vector<OrderBookEntry> asks = getOrders(OrderBookType::ask, product, timestamp);
+    // bids = orderbook.bids
+    vector<OrderBookEntry> bids = getOrders(OrderBookType::bid, product, timestamp);
+
+    // sales = []
+    vector<OrderBookEntry> sales;
+
+    // sort asks lowest first
+    sort(asks.begin(), asks.end(), OrderBookEntry::compateByPriceAsc);
+    // sort bids highest first
+    sort(bids.begin(), bids.end(), OrderBookEntry::compateByPriceDesc);
+
+    for (OrderBookEntry& ask : asks) {
+        for (OrderBookEntry& bid : bids) {
+            if (bid.price >= ask.price) {
+                OrderBookEntry sale{
+                    timestamp, product, OrderBookType::sale, ask.price, 0
+                };
+                if (bid.amount == ask.amount) {
+                    sale.amount = ask.amount;
+                    sales.push_back(sale);
+                    bid.amount = 0; // make sure this bid won't be processed again
+                    break;
+                }
+                if (bid.amount > ask.amount) {
+                    sale.amount = ask.amount;
+                    sales.push_back(sale);
+                    bid.amount = bid.amount - ask.amount;
+                    break;
+                }
+                if (bid.amount < ask.amount) {
+                    sale.amount = bid.amount;
+                    sales.push_back(sale);
+                    ask.amount = ask.amount - bid.amount;
+                    bid.amount = 0;
+                    continue; // move to the next bid
+                }
+
+            }
+        }
+    }
+    return sales;
+}

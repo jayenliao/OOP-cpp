@@ -32,6 +32,8 @@ class OrderBook {
 
         void insertOrder(OrderBookEntry& order);
 
+        vector<OrderBookEntry> matchAsksToBids(string product, string timestamp);
+
         static double getHighPrice(vector<OrderBookEntry>& orders);
         static double getLowPrice(vector<OrderBookEntry>& orders);
         static vector<double> get1HPrices(vector<OrderBookEntry>& orders, string& currentTime);

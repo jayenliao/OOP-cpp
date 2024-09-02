@@ -1,5 +1,9 @@
 #include "OrderBook.h"
 #include <map>
+#include <ctime>
+#include <sstream>
+#include <iomanip>
+#include <cmath>
 
 using namespace std;
 
@@ -63,6 +67,50 @@ double OrderBook::getLowPrice(vector<OrderBookEntry>& orders) {
     }
     return min;
 }
+
+vector<double> OrderBook::get1HPrices(vector<OrderBookEntry>& orders, string& currentTime) {
+    // Parse the currentTime into a time_t object
+    tm tm = {};
+    istringstream ss(currentTime.substr(0, 19));
+    ss >> get_time(&tm, "%Y/%m/%d %H:%M:%S");
+    time_t currentTimestamp = mktime(&tm);
+
+    double firstPrice = 0.0;
+    double lastPrice = 0.0;
+    bool foundFirst = false;
+
+    // Iterate over the orders to find the prices within the 1H window
+    for (const auto& order : orders)
+    {
+        // Parse the order timestamp into a time_t object
+        std::tm orderTime = {};
+        std::istringstream orderSS(order.timestamp.substr(0, 19));
+        orderSS >> std::get_time(&orderTime, "%Y/%m/%d %H:%M:%S");
+        time_t orderTimestamp = mktime(&orderTime);
+
+        // Check if the order is within the 1-hour window
+        if (difftime(orderTimestamp, currentTimestamp) <= 60) {
+            if (!foundFirst) {
+                firstPrice = order.price;
+                foundFirst = true;
+            }
+            lastPrice = order.price;
+        }
+
+        if (!foundFirst) {
+            throw runtime_error("No orders found within the 24-hour window");
+        }
+    }
+
+    vector<double> prices1H;
+    prices1H.push_back(firstPrice);
+    prices1H.push_back(lastPrice);
+
+    return prices1H;
+}
+
+
+
 
 string OrderBook::getEarlistTime() {
    return orders[0].timestamp;

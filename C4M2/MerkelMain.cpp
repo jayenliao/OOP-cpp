@@ -74,9 +74,14 @@ void MerkelMain::printMarketStats() {
 
 void MerkelMain::enterAsk() {
     cout << "Make an offer: Enter product, price, and amount to ask." << endl;
-    cout << "E.g., ETH/BTC, 200, 0.5.\n" << endl;
+    cout << "E.g., ETH/BTC, 200, 0.5.\t" << endl;
     string input;
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, input);
+    vector<string> tokens = CSVReader::tokenize(input, ',');
+    if (tokens.size() != 3) {cout << "Bad input!" << input << endl;}
+
+
     cout << "You entered: " << input << endl;
 
 }

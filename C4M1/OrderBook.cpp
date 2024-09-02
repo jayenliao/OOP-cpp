@@ -67,3 +67,17 @@ double OrderBook::getLowPrice(vector<OrderBookEntry>& orders) {
 string OrderBook::getEarlistTime() {
    return orders[0].timestamp;
 }
+
+string OrderBook::getNextTime(string timestamp) {
+   string next_timestamp = "";
+   for (OrderBookEntry& entry : orders) {
+        if (entry.timestamp < timestamp) {
+            next_timestamp = entry.timestamp;
+            break;
+        }
+   }
+   if (next_timestamp == "") {
+        next_timestamp = orders[0].timestamp;
+   }
+   return next_timestamp;
+}

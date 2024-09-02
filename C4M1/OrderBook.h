@@ -9,19 +9,26 @@ using namespace std;
 class OrderBook {
 
     public:
-    /* Construct, reading a csv file */
+        /** Construct, reading a csv file */
         OrderBook(std::string filename);
 
-    /* Return vector of all known products in the dataset */
+        /** Return vector of all known products in the dataset */
         vector<string> getKnownProducts();
 
-    /* Return vector of Orders according to the sent filters */
+        /** Return vector of Orders according to the sent filters */
         vector<OrderBookEntry> getOrders(
             OrderBookType type,
             string product,
             string timestamp
         );
+
+        /** Returns the earlist time in the orderBook */
         string getEarlistTime();
+
+        /** Returns the next time after the sent time in the orderBook
+         * If there is no next timstamps, wraps around to the start
+        */
+        string getNextTime(string timestamp);
 
         static double getHighPrice(vector<OrderBookEntry>& orders);
         static double getLowPrice(vector<OrderBookEntry>& orders);

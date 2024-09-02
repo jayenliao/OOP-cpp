@@ -13,6 +13,7 @@ MerkelMain::MerkelMain() {
 void MerkelMain::init() {
     // loadOrderBook();
     int input;
+    currentTime = orderBook.getEarlistTime();
     while (true) {
         printMenu();
         input = getUserOption();
@@ -32,6 +33,8 @@ void MerkelMain::printMenu() {
     cout << "4. Make a bid" << endl;
     cout << "5. Print wallet" << endl;
     cout << "6. Continue" << endl;
+    cout << "===========================" << endl;
+    cout << "Current time: " << currentTime << endl;
 }
 
 void MerkelMain::printHelp() {

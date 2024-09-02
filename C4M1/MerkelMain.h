@@ -24,5 +24,7 @@ class MerkelMain {
         int getUserOption();
         void processUserOption(int userOption);
 
+        string currentTime;
+
         OrderBook orderBook{"20200317.csv"};
 };

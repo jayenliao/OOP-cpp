@@ -64,3 +64,6 @@ double OrderBook::getLowPrice(vector<OrderBookEntry>& orders) {
     return min;
 }
 
+string OrderBook::getEarlistTime() {
+   return orders[0].timestamp;
+}

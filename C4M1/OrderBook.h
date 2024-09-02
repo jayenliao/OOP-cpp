@@ -21,6 +21,7 @@ class OrderBook {
             string product,
             string timestamp
         );
+        string getEarlistTime();
 
         static double getHighPrice(vector<OrderBookEntry>& orders);
         static double getLowPrice(vector<OrderBookEntry>& orders);

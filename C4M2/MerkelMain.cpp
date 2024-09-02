@@ -72,8 +72,13 @@ void MerkelMain::printMarketStats() {
     // cout << "Number of asks = " << asks << endl;
 }
 
-void MerkelMain::enterOffer() {
-    cout << "Make an offer: Enter the amount to ask.\n" << endl;
+void MerkelMain::enterAsk() {
+    cout << "Make an offer: Enter product, price, and amount to ask." << endl;
+    cout << "E.g., ETH/BTC, 200, 0.5.\n" << endl;
+    string input;
+    getline(cin, input);
+    cout << "You entered: " << input << endl;
+
 }
 
 void MerkelMain::enterBid() {
@@ -107,7 +112,7 @@ void MerkelMain::processUserOption(int userOption) {
     } else if (userOption == 2) {
         printMarketStats();
     } else if (userOption == 3) {
-        enterOffer();
+        enterAsk();
     } else if (userOption == 4) {
         enterBid();
     } else if (userOption == 5) {

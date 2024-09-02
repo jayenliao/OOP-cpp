@@ -79,8 +79,23 @@ void MerkelMain::enterAsk() {
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(cin, input);
     vector<string> tokens = CSVReader::tokenize(input, ',');
-    if (tokens.size() != 3) {cout << "Bad input!" << input << endl;}
-
+    if (tokens.size() != 3) {
+        cout << "Bad input: " << input << endl;
+        cout << "There should be 3 tokens!\n" << endl;
+    }
+    else {
+        try {
+            OrderBookEntry obe = CSVReader::strToOBE(
+                currentTime,
+                tokens[0],
+                OrderBookType::ask,
+                tokens[1],
+                tokens[2]
+            );
+        } catch (const exception& e) {
+            cout << "MerkelMain::enterAsk() bad input!" << endl;
+        }
+    }
 
     cout << "You entered: " << input << endl;
 

@@ -30,6 +30,8 @@ class OrderBook {
         */
         string getNextTime(string timestamp);
 
+        void insertOrder(OrderBookEntry& order);
+
         static double getHighPrice(vector<OrderBookEntry>& orders);
         static double getLowPrice(vector<OrderBookEntry>& orders);
         static vector<double> get1HPrices(vector<OrderBookEntry>& orders, string& currentTime);

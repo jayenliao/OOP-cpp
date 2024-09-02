@@ -16,6 +16,9 @@ class OrderBookEntry
             double _amount
         );
         static OrderBookType strToOBT(string s);
+        static bool compateByTimestamp(OrderBookEntry& e1, OrderBookEntry& e2) {
+            return e1.timestamp < e2.timestamp;
+        }
 
         double price;
         double amount;

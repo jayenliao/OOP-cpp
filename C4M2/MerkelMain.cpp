@@ -98,6 +98,7 @@ void MerkelMain::enterAsk() {
                 tokens[1],
                 tokens[2]
             );
+            orderBook.insertOrder(obe);
         } catch (const exception& e) {
             cout << "MerkelMain::enterAsk() bad input!" << endl;
         }

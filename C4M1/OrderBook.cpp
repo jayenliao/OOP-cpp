@@ -71,7 +71,7 @@ string OrderBook::getEarlistTime() {
 string OrderBook::getNextTime(string timestamp) {
    string next_timestamp = "";
    for (OrderBookEntry& entry : orders) {
-        if (entry.timestamp < timestamp) {
+        if (entry.timestamp > timestamp) {
             next_timestamp = entry.timestamp;
             break;
         }

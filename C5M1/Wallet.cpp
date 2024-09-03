@@ -7,7 +7,7 @@ Wallet::Wallet() {
 
 void Wallet::insertCurrency(string type, double amount) {
     if (amount < 0) {
-        throw exception{};
+        throw exception();
     }
 
     double balance;
@@ -29,5 +29,11 @@ bool Wallet::containsCurrency(string type, double amount) {
 }
 
 string Wallet::toString() {
-    return "oink";
+    string out;
+    for (pair<string, double> pair : currencies) {
+        string currency = pair.first;
+        double amount = pair.second;
+        out += currency + " : " + to_string(amount) + "\n";
+    }
+    return out;
 }

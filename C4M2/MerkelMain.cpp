@@ -11,7 +11,6 @@ MerkelMain::MerkelMain() {
 }
 
 void MerkelMain::init() {
-    // loadOrderBook();
     int input;
     currentTime = orderBook.getEarlistTime();
     while (true) {
@@ -21,10 +20,6 @@ void MerkelMain::init() {
     }
 
 }
-
-// void MerkelMain::loadOrderBook() {
-//     orders = CSVReader::readCSV("/Users/jayliao/Documents/2_areas/001_programming/cpp/coursera_OOP_specialization/C3M1/Merkelerex/src/20200317.csv");
-// }
 
 void MerkelMain::printMenu() {
     cout << endl;
@@ -63,15 +58,6 @@ void MerkelMain::printMarketStats() {
         cout << endl;
 
     }
-    // cout << "OrderBook contains: " << orders.size() << " entries.\n" << endl;
-    // unsigned int bids = 0;
-    // unsigned int asks = 0;
-    // for (OrderBookEntry& entry : orders) {
-    //     if (entry.orderType == OrderBookType::bid) {++bids;}
-    //     if (entry.orderType == OrderBookType::ask) {++asks;}
-    // }
-    // cout << "Number of bids = " << bids << endl;
-    // cout << "Number of asks = " << asks << endl;
 }
 
 void MerkelMain::enterAsk() {

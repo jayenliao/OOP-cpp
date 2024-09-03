@@ -1,4 +1,5 @@
 #include "Wallet.h"
+#include "CSVReader.h"
 #include <iostream>
 using namespace std;
 
@@ -47,6 +48,28 @@ bool Wallet::containsCurrency(string type, double amount) {
     } else {
         return currencies[type];
     }
+}
+
+bool Wallet::canFullfillOrder(const OrderBookEntry order) {
+    vector<string> currencyPair = CSVReader::tokenize(order.product, '/');
+
+    // ask
+    if (order.orderType == OrderBookType::ask) {
+        string currency = currencyPair[0];
+        double amount = order.amount;
+        cout << "Wallet::canFullfillOrder " << currency << " / " << amount << endl;
+
+        return containsCurrency(currency, amount);
+    }
+
+    // bid
+    if (order.orderType == OrderBookType::bid) {
+        string currency = currencyPair[1];
+        double amount = order.amount * order.price;
+        return containsCurrency(currency, amount);
+    }
+
+    return false;
 }
 
 string Wallet::toString() {

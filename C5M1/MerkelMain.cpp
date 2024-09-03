@@ -14,7 +14,7 @@ void MerkelMain::init() {
     int input;
     currentTime = orderBook.getEarlistTime();
 
-    wallet.insertCurrency("BTC", 10);
+    // wallet.insertCurrency("BTC", 10);
 
     while (true) {
         printMenu();
@@ -87,7 +87,13 @@ void MerkelMain::enterAsk() {
                 tokens[1],
                 tokens[2]
             );
-            orderBook.insertOrder(obe);
+            if (wallet.canFullfillOrder(obe)) {
+                cout << "Wallet looks good." << endl;
+                orderBook.insertOrder(obe);
+            } else {
+                cout << "Wallet has insufficient funds." << endl;
+            }
+
         } catch (const exception& e) {
             cout << "MerkelMain::enterAsk() bad input!" << endl;
         }

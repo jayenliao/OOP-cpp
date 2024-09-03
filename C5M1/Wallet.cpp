@@ -6,11 +6,11 @@ Wallet::Wallet() {
 }
 
 void Wallet::insertCurrency(string type, double amount) {
-    double balance;
-
     if (amount < 0) {
         throw exception{};
     }
+
+    double balance;
     if (currencies.count(type) == 0) {
         balance = 0;
     } else {
@@ -21,7 +21,11 @@ void Wallet::insertCurrency(string type, double amount) {
 }
 
 bool Wallet::containsCurrency(string type, double amount) {
-    return false;
+    if (currencies.count(type) == 0) {
+        return false;
+    } else {
+        return currencies[type];
+    }
 }
 
 string Wallet::toString() {

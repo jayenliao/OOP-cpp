@@ -1,4 +1,5 @@
 #include "Wallet.h"
+#include <iostream>
 using namespace std;
 
 Wallet::Wallet() {
@@ -20,6 +21,26 @@ void Wallet::insertCurrency(string type, double amount) {
     currencies[type] = balance;
 }
 
+bool Wallet::removeCurrency(string type, double amount) {
+    if (amount < 0) {
+        return false;
+    }
+
+    double balance;
+    if (currencies.count(type) == 0) {
+        return false;
+    } else {
+        // do we have an enough amount of this currency?
+        if (containsCurrency(type, amount)) { // yes
+            cout << "Removing " << type << ": " << to_string(amount) << endl;
+            currencies[type] -= amount;
+            return true;
+        } else {                              // not enough
+            return false;
+        }
+    }
+}
+
 bool Wallet::containsCurrency(string type, double amount) {
     if (currencies.count(type) == 0) {
         return false;
@@ -37,3 +58,5 @@ string Wallet::toString() {
     }
     return out;
 }
+
+

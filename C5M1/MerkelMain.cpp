@@ -14,7 +14,8 @@ void MerkelMain::init() {
     int input;
     currentTime = orderBook.getEarlistTime();
 
-    // wallet.insertCurrency("BTC", 10);
+    wallet.insertCurrency("BTC", 10);
+    wallet.insertCurrency("ETH", 100);
 
     while (true) {
         printMenu();
@@ -101,7 +102,40 @@ void MerkelMain::enterAsk() {
 }
 
 void MerkelMain::enterBid() {
-    cout << "Make a bid: Enter the amount to bid.\n" << endl;
+    cout << "Make a bid - enter product, price, and amount. E.g., ETH/BTC, 200, 0.5." << endl;
+    string input;
+    char ch;
+    // Read characters one by one until newline is encountered
+    while (cin.get(ch) && ch != '\n') {
+        input += ch;
+    }
+    cout << "You entered: " << input << endl;
+
+    vector<string> tokens = CSVReader::tokenize(input, ',');
+    if (tokens.size() != 3) {
+        cout << "MerkelMain::enterBid Bad input: " << input << endl;
+        cout << "There should be 3 tokens!" << endl;
+    }
+    else {
+        try {
+            OrderBookEntry obe = CSVReader::strToOBE(
+                currentTime,
+                tokens[0],
+                OrderBookType::bid,
+                tokens[1],
+                tokens[2]
+            );
+            if (wallet.canFullfillOrder(obe)) {
+                cout << "Wallet looks good." << endl;
+                orderBook.insertOrder(obe);
+            } else {
+                cout << "Wallet has insufficient funds." << endl;
+            }
+
+        } catch (const exception& e) {
+            cout << "MerkelMain::enterBid() bad input!" << endl;
+        }
+    }
 }
 
 void MerkelMain::printWallet() {

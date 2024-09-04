@@ -1,4 +1,5 @@
 #include "OrderBookEntry.h"
+#include <string>
 using namespace std;
 
 OrderBookEntry::OrderBookEntry(
@@ -6,13 +7,15 @@ OrderBookEntry::OrderBookEntry(
     std::string _product,
     OrderBookType _orderType,
     double _price,
-    double _amount
+    double _amount,
+    string _username
 )
 : price(_price),
   amount(_amount),
   timestamp(_timestamp),
   product(_product),
-  orderType(_orderType)
+  orderType(_orderType),
+  username(_username)
 {
 
 }

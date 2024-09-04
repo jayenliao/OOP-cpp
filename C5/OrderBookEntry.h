@@ -13,7 +13,8 @@ class OrderBookEntry
             string _product,
             OrderBookType _orderType,
             double _price,
-            double _amount
+            double _amount,
+            string _username = "dataset"
         );
         static OrderBookType strToOBT(string s);
         static bool compateByTimestamp(OrderBookEntry& e1, OrderBookEntry& e2) {
@@ -31,4 +32,5 @@ class OrderBookEntry
         string timestamp;
         string product;
         OrderBookType orderType;
+        string username;
 };

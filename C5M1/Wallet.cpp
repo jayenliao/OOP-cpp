@@ -43,10 +43,10 @@ bool Wallet::removeCurrency(string type, double amount) {
 }
 
 bool Wallet::containsCurrency(string type, double amount) {
-    if (currencies.count(type) == 0) {
+    if (currencies.count(type) == 0 || currencies[type] < amount) {
         return false;
     } else {
-        return currencies[type];
+        return true; // currencies[type];
     }
 }
 

@@ -4,6 +4,7 @@
 #include <sstream>
 #include <iomanip>
 #include <cmath>
+#include <iostream>
 
 using namespace std;
 
@@ -161,6 +162,12 @@ vector<OrderBookEntry> OrderBook::matchAsksToBids(
     // sales = []
     vector<OrderBookEntry> sales;
 
+    // check to ensure we have bids and asks to process.
+    if (asks.size() == 0 || bids.size() == 0) {
+        std::cout << " OrderBook::matchAsksToBids no bids or asks" << std::endl;
+        return sales;
+    }
+
     // sort asks lowest first
     sort(asks.begin(), asks.end(), OrderBookEntry::compateByPriceAsc);
     // sort bids highest first
@@ -176,6 +183,7 @@ vector<OrderBookEntry> OrderBook::matchAsksToBids(
                 if (bid.username == "simuser") {
                     sale.username = "simuser";
                     sale.orderType = OrderBookType::bidsale;
+                    cout << "yoyooyo" << endl;
                 }
                 if (ask.username == "simuser") {
                     sale.username = "simuser";
@@ -194,7 +202,7 @@ vector<OrderBookEntry> OrderBook::matchAsksToBids(
                     bid.amount = bid.amount - ask.amount;
                     break;
                 }
-                if (bid.amount < ask.amount) {
+                if (bid.amount < ask.amount && bid.amount > 0) {
                     sale.amount = bid.amount;
                     sales.push_back(sale);
                     ask.amount = ask.amount - bid.amount;

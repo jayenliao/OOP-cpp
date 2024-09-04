@@ -88,6 +88,8 @@ void MerkelMain::enterAsk() {
                 tokens[1],
                 tokens[2]
             );
+            obe.username = "simnuser";
+
             if (wallet.canFullfillOrder(obe)) {
                 cout << "Wallet looks good." << endl;
                 orderBook.insertOrder(obe);
@@ -125,6 +127,8 @@ void MerkelMain::enterBid() {
                 tokens[1],
                 tokens[2]
             );
+            obe.username = "simnuser";
+            
             if (wallet.canFullfillOrder(obe)) {
                 cout << "Wallet looks good." << endl;
                 orderBook.insertOrder(obe);

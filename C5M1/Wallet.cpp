@@ -24,7 +24,7 @@ void Wallet::insertCurrency(string type, double amount) {
 
 bool Wallet::removeCurrency(string type, double amount) {
     if (amount < 0) {
-        return false;
+        throw exception();
     }
 
     double balance;

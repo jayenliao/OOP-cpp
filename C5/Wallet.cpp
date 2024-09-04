@@ -82,4 +82,30 @@ string Wallet::toString() {
     return out;
 }
 
+void Wallet::processSale(OrderBookEntry& sale) {
+    vector<string> currencyPair = CSVReader::tokenize(sale.product, '/');
 
+    // ask
+    if (sale.orderType == OrderBookType::asksale) {
+        cout << "\n\n\nASSSSSSK!\n\n\n" << endl;
+        string currencyOutgoing = currencyPair[0];
+        string currencyIncoming = currencyPair[1];
+        double amountOutgoing = sale.amount;
+        double amountIncoming = sale.amount * sale.price;
+        currencies[currencyOutgoing] -= amountOutgoing;
+        currencies[currencyIncoming] += amountIncoming;
+        cout << "\n\n\nASSSSSSK!\n\n\n" << endl;
+    } else {cout << "\n\n\nQQ\n\n\n" << endl;}
+
+    // bid
+    if (sale.orderType == OrderBookType::bidsale) {
+        cout << "\n\n\nBIIIIIIID\n\n\n!" << endl;
+        string currencyOutgoing = currencyPair[1];
+        string currencyIncoming = currencyPair[0];
+        double amountOutgoing = sale.amount * sale.price;
+        double amountIncoming = sale.amount;
+        currencies[currencyOutgoing] -= amountOutgoing;
+        currencies[currencyIncoming] += amountIncoming;
+        cout << "\n\n\nBIIIIIIID!\n\n\n" << endl;
+    } else {cout << "\n\n\nQAAAAAQ\n\n\n" << endl;}
+}

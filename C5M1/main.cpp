@@ -8,14 +8,31 @@
 using namespace std;
 
 int main() {
-    MerkelMain app{};
-    app.init();
+    // MerkelMain app{};
+    // app.init();
 
     Wallet wallet;
-    wallet.insertCurrency("BTC", 10);
-    wallet.insertCurrency("USDT", 10000);
-    // cout << "Wallet has BTC " << wallet.containsCurrency("BTC", 10) << endl;
-    // cout << "Wallet contains USDT " << wallet.containsCurrency("USDT", 10000) << endl;
+
+    // Test 1
+    cout << "- if currency 'type' is not in the wallet yet, set the amount to amount." << endl;
+    wallet.insertCurrency("BTC", 5);
     cout << wallet.toString() << endl;
 
+    // Test 2
+    cout << "- if currency 'type' is not in the wallet yet, set the amount to amount." << endl;
+    wallet.insertCurrency("BTC", 12);
+    cout << wallet.toString() << endl;
+
+    // Test 3
+    cout << "- throw an exception if 'amount' is less than 0" << endl;
+    wallet.insertCurrency("BTC", -12);
+    cout << wallet.toString() << endl;
+
+    // wallet.removeCurrency("BTC", 10);
+    // cout << wallet.toString() << endl;
+
+    // OrderBookEntry obe{"timestamp", "USDT/BTC", OrderBookType::ask, 10, 25};
+    // if (wallet.canFullfillOrder(obe)) {
+    //     cout << "Fullfilled the order!";
+    // }
 }

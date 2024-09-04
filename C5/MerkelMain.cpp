@@ -88,7 +88,7 @@ void MerkelMain::enterAsk() {
                 tokens[1],
                 tokens[2]
             );
-            obe.username = "simnuser";
+            obe.username = "simuser";
 
             if (wallet.canFullfillOrder(obe)) {
                 cout << "Wallet looks good." << endl;
@@ -127,8 +127,8 @@ void MerkelMain::enterBid() {
                 tokens[1],
                 tokens[2]
             );
-            obe.username = "simnuser";
-            
+            obe.username = "simuser";
+
             if (wallet.canFullfillOrder(obe)) {
                 cout << "Wallet looks good." << endl;
                 orderBook.insertOrder(obe);
@@ -153,6 +153,11 @@ void MerkelMain::gotoNextTimeFrame() {
     cout << "Sales: " << sales.size() << endl;
     for (OrderBookEntry& sale : sales) {
         cout << "Sale price=" << sale.price << ", amount=" << sale.amount << endl;
+        if (sale.username == "simuser") {
+            // update the wallet
+            cout << "Processing ..." << endl;
+            wallet.processSale(sale);
+        }
     }
     currentTime = orderBook.getNextTime(currentTime);
 }

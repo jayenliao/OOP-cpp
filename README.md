@@ -2,15 +2,17 @@
 
 This is the repo for learning a coursera specialization "Object Oriented Programming (OOP)", which contains 5 courses. Here are their names and my certificate for completing them.
 
-- Courese 1 (C1) - Intro to OOP in C++
+- [Courese 1 (C1) - Intro to OOP in C++](https://www.coursera.org/account/accomplishments/verify/KOUVZCM0NOC3)
 
-- Courese 2 (C2) - C++ Programming: Classes and Data
+- [Courese 2 (C2) - C++ Programming: Classes and Data](https://www.coursera.org/account/accomplishments/verify/D7VC80IHBXYT)
 
-- Courese 3 (C3) - OOP in C++: Functions
+- [Courese 3 (C3) - OOP in C++: Functions](https://www.coursera.org/account/accomplishments/verify/OBLRCRITZWEH)
 
-- Courese 4 (C4) - Working with Objects in C++
+- [Courese 4 (C4) - Working with Objects in C++](https://www.coursera.org/account/accomplishments/verify/OBOC4RVAVH7Q)
 
-- Courese 5 (C5)- Use C++ to build a Crypto Trading Platform: Final System.
+- [Courese 5 (C5)- Use C++ to build a Crypto Trading Platform: Final System](https://www.coursera.org/account/accomplishments/verify/SXY015LTX649)
+
+- [Certificate for completing the spefication with these 5 courses](https://coursera.org/share/c1f32e6c3596fb52cd6112859b4c91d6)
 
 ## Completed assignments
 

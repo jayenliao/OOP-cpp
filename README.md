@@ -1,6 +1,6 @@
 # Object Oriented Programming with C++ (OOP-cpp)
 
-This is the repo for learning a coursera specialization "Object Oriented Programming (OOP)", which contains 5 courses:
+This is the repo for learning a coursera specialization "Object Oriented Programming (OOP)", which contains 5 courses. Here are their names and my certificate for completing them.
 
 - Courese 1 (C1) - Intro to OOP in C++
 
@@ -20,3 +20,6 @@ This is the repo for learning a coursera specialization "Object Oriented Program
 
 3. [**csStudent: information about computer science students**](https://github.com/jayenliao/OOP-cpp/tree/main/C3M1/assignment), submitted on 15 August 2024.
 
+4. [**Implement a market analysis function***](https://github.com/jayenliao/OOP-cpp/tree/main/C4M1#readme), submitted on 2 September, 2024.
+
+5. [**Test the Wallet functions: `insertCurrency`, `removeCurrency`, and `containsCurrency`**](https://github.com/jayenliao/OOP-cpp/tree/main/C5/assignment#readme), submitted on 4 September.

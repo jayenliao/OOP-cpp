@@ -10,9 +10,9 @@ using namespace std;
 int main() {
     Wallet wallet;
 
-    // Test Wallet::insertCurrency()
+    // // Test Wallet::insertCurrency()
 
-    // Test 1
+    // // Test 1
     // cout << "- if currency 'type' is not in the wallet yet, set the amount to amount." << endl;
     // cout << "Currently, the wallet is empty:" << endl;
     // cout << wallet.toString() << endl;
@@ -61,26 +61,26 @@ int main() {
     // Test Wallet::containsCurrency()
 
     // Give the wallet some initial funds
-    wallet.insertCurrency("ETH", 100);
-    cout << "Currently, the wallet has: " << wallet.toString() << endl;
-    string message_true = "True, the wallet contains the sent amount of currency or more";
-    string message_false = "False, the wallet does not contain the sent amount of currency or more";
+    // wallet.insertCurrency("ETH", 100);
+    // cout << "Currently, the wallet has: " << wallet.toString() << endl;
+    // string message_true = "True, the wallet contains the sent amount of currency or more";
+    // string message_false = "False, the wallet does not contain the sent amount of currency or more";
 
-    // Test 1
-    cout << "- if the wallet contains the sent amount of currency or more, return true" << endl;
-    bool currencyContained = wallet.containsCurrency("ETH", 50);
-    cout << "Contains 'ETH, 50'?" << endl;
-    if (currencyContained) {cout << message_true << endl;}
-    else {cout << message_false << endl;}
+    // // Test 1
+    // cout << "- if the wallet contains the sent amount of currency or more, return true" << endl;
+    // bool currencyContained = wallet.containsCurrency("ETH", 50);
+    // cout << "Contains 'ETH, 50'?" << endl;
+    // if (currencyContained) {cout << message_true << endl;}
+    // else {cout << message_false << endl;}
 
-    cout << endl;
+    // cout << endl;
 
-    // Test 2
-    cout << "- if the wallet does not contains the sent amount of currency or more, return false" << endl;
-    currencyContained = wallet.containsCurrency("ETH", 50000);
-    cout << "Contains 'ETH, 50000'?" << endl;
-    if (currencyContained) {cout << message_true << endl;}
-    else {cout << message_false << endl;}
+    // // Test 2
+    // cout << "- if the wallet does not contains the sent amount of currency or more, return false" << endl;
+    // currencyContained = wallet.containsCurrency("ETH", 50000);
+    // cout << "Contains 'ETH, 50000'?" << endl;
+    // if (currencyContained) {cout << message_true << endl;}
+    // else {cout << message_false << endl;}
 
     // wallet.removeCurrency("BTC", 10);
     // cout << wallet.toString() << endl;
@@ -90,6 +90,6 @@ int main() {
     //     cout << "Fullfilled the order!";
     // }
 
-    // MerkelMain app{};
-    // app.init();
+    MerkelMain app{};
+    app.init();
 }

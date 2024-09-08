@@ -8,7 +8,10 @@
 using namespace std;
 
 int main() {
-    Wallet wallet;
+    MerkelMain app{};
+    app.init();
+    
+    // Wallet wallet;
 
     // // Test Wallet::insertCurrency()
 
@@ -89,7 +92,4 @@ int main() {
     // if (wallet.canFullfillOrder(obe)) {
     //     cout << "Fullfilled the order!";
     // }
-
-    MerkelMain app{};
-    app.init();
 }
